@@ -7,8 +7,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.when;
-
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorTest {
     @Mock
@@ -23,6 +21,8 @@ public class CalculatorTest {
     private CancelCommand mockCancelCommand;
     @Mock
     private CalculatorView mockCalculatorView;
+    @Mock
+    private AbsoluteOperation mockAbsoluteOperation;
 
 
     private Calculator calculator;
@@ -31,7 +31,8 @@ public class CalculatorTest {
     public void setUp() throws Exception {
         calculator = new Calculator(mockAddCommand, mockSubtractCommand,
                 mockMultiplicationCommand, mockDivideCommand,
-                mockCancelCommand, mockCalculatorView);
+                mockCancelCommand, mockCalculatorView,
+                mockAbsoluteOperation);
     }
 
     @Test
