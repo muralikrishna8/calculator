@@ -38,11 +38,12 @@ public class CalculatorController {
         SquareOperation squareOperation = new SquareOperation();
         SquareRootOperation squareRootOperation = new SquareRootOperation();
         CubeOperation cubeOperation = new CubeOperation();
+        CubeRootOperation cubeRootOperation = new CubeRootOperation();
 
         Calculator calculator = new Calculator(addCommand, subtractCommand, multiplyCommand,
                                     divideCommand, cancelCommand, calculatorView, absoluteOperation,
                                     negativeOperation, squareOperation, squareRootOperation,
-                                    cubeOperation);
+                                    cubeOperation, cubeRootOperation);
 
         CalculatorController calculatorController = new CalculatorController(calculator, calculatorView);
         calculatorController.execute();
