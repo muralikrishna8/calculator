@@ -2,11 +2,11 @@ package com.twu.calculator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
@@ -19,28 +19,25 @@ public class CalculatorControllerTest {
     CalculatorView mockCalculatorView;
 
     @Test
-    public void shouldSplitTheCommandAndOperand() {
+    public void shouldPerformGivenOperationsAndExit() {
         CalculatorController calculatorController = new CalculatorController(mockCalculator, mockCalculatorView);
+        when(mockCalculatorView.read()).thenReturn("add 2", "multiply 3", "exit");
 
-        when(mockCalculatorView.read()).thenReturn("add 2");
+        calculatorController.execute();
 
-        calculatorController.commandParser();
-
-
-        Mockito.verify(mockCalculatorView, times(1)).read();
-        Mockito.verify(mockCalculator, times(1)).execute("add", 2.0);
+        verify(mockCalculatorView, times(3)).read();
+        verify(mockCalculator, times(2)).execute(Matchers.any(String.class), Matchers.any(Double.class));
     }
 
     @Test
-    public void shouldExecuteTheCancelCommand() {
+    public void shouldExitWhenExitCommandPassed() {
         CalculatorController calculatorController = new CalculatorController(mockCalculator, mockCalculatorView);
+        when(mockCalculatorView.read()).thenReturn("exit");
 
-        when(mockCalculatorView.read()).thenReturn("cancel");
+        calculatorController.execute();
 
-        calculatorController.commandParser();
-
-
-        Mockito.verify(mockCalculatorView, times(1)).read();
-        Mockito.verify(mockCalculator, times(1)).execute("cancel", 0.0);
+        verify(mockCalculatorView, times(1)).read();
+        verify(mockCalculator, times(0)).execute("exit", 0.0);
     }
+
 }

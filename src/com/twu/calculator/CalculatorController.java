@@ -3,24 +3,27 @@ package com.twu.calculator;
 public class CalculatorController {
     CalculatorView calculatorView;
     Calculator calculator;
-    private String command = "";
+    private String operatorName;
     private double operand;
+    private String input;
 
     public CalculatorController(Calculator calculator, CalculatorView calculatorView){
         this.calculator = calculator;
         this.calculatorView = calculatorView;
     }
 
-    public void commandParser() {
-        String input = calculatorView.read();
+    public void execute() {
+        input = calculatorView.read();
+        while(!input.equals("exit")) {
+            String[] token = input.split(" ");
+            operatorName = token[0];
+            if (token.length == 2) {
+                operand = Double.parseDouble(token[1]);
+            }
+            calculator.execute(operatorName, operand);
 
-        String[] token = input.split(" ");
-        command = token[0];
-        if (token.length == 2) {
-            operand = Double.parseDouble(token[1]);
+            input = calculatorView.read();
         }
-        
-        calculator.execute(command, operand);
     }
 
     public static void main(String[] args) {
@@ -34,7 +37,7 @@ public class CalculatorController {
         Calculator calculator = new Calculator(addCommand, subtractCommand, multiplyCommand,
                                     divideCommand, cancelCommand, calculatorView);
 
-        CalculatorController controller = new CalculatorController(calculator, calculatorView);
-        controller.commandParser();
+        CalculatorController calculatorController = new CalculatorController(calculator, calculatorView);
+        calculatorController.execute();
     }
 }

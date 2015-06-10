@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class DivideCommandTest {
     @Test
     public void shouldDivideTwoOperands() throws Exception {
-        Executable divideCommand = new DivideCommand();
+        ArithmeticOperation divideCommand = new DivideCommand();
 
         double actualTotal = divideCommand.execute(6.0, 3.0);
 

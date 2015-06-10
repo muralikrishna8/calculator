@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class SubtractCommandTest {
     @Test
     public void shouldSubtractTwoOperands() throws Exception {
-        Executable subtractCommand = new SubtractCommand();
+        ArithmeticOperation subtractCommand = new SubtractCommand();
 
         double actualTotal = subtractCommand.execute(1.0, 3.0);
 

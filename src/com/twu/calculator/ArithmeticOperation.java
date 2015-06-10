@@ -1,5 +1,5 @@
 package com.twu.calculator;
 
-public interface Executable {
+public interface ArithmeticOperation {
     double execute(double a, double b);
 }

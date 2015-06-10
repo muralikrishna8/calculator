@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class AddCommandTest {
     @Test
     public void shouldAddTwoOperands() throws Exception {
-        Executable addCommand = new AddCommand();
+        ArithmeticOperation addCommand = new AddCommand();
 
         double actualTotal = addCommand.execute(1.0, 3.0);
 

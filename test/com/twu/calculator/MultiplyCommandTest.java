@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class MultiplyCommandTest {
     @Test
     public void shouldMultiplyTwoOperands() throws Exception {
-        Executable multiplyCommand = new MultiplyCommand();
+        ArithmeticOperation multiplyCommand = new MultiplyCommand();
 
         double actualTotal = multiplyCommand.execute(2.0, 3.0);
 
