@@ -3,10 +3,11 @@ package com.twu.calculator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorTest {
@@ -20,6 +21,8 @@ public class CalculatorTest {
     private DivideCommand mockDivideCommand;
     @Mock
     private CancelCommand mockCancelCommand;
+    @Mock
+    private CalculatorView mockCalculatorView;
 
 
     private Calculator calculator;
@@ -27,7 +30,8 @@ public class CalculatorTest {
     @Before
     public void setUp() throws Exception {
         calculator = new Calculator(mockAddCommand, mockSubtractCommand,
-                mockMultiplicationCommand, mockDivideCommand, mockCancelCommand);
+                mockMultiplicationCommand, mockDivideCommand,
+                mockCancelCommand, mockCalculatorView);
     }
 
     @Test
