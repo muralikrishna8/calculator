@@ -1,5 +1,7 @@
 package com.twu.calculator;
 
+import com.sun.java.swing.action.CancelAction;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,5 +27,16 @@ public class Calculator {
         Executable executable = commandActionMap.get(command);
         this.result = executable.execute(result, operand);
         calculatorView.print(result+"");
+    }
+
+    public static void main(String[] args) {
+        AddCommand addCommand = new AddCommand();
+        SubtractCommand subtractCommand = new SubtractCommand();
+        MultiplyCommand multiplyCommand = new MultiplyCommand();
+        DivideCommand divideCommand = new DivideCommand();
+        CancelCommand cancelCommand = new CancelCommand();
+        CalculatorView calculatorView = new CalculatorView();
+
+        new Calculator(addCommand, subtractCommand, multiplyCommand, divideCommand, cancelCommand, calculatorView);
     }
 }
