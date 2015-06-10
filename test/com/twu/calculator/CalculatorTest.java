@@ -18,13 +18,16 @@ public class CalculatorTest {
     private MultiplyCommand mockMultiplicationCommand;
     @Mock
     private DivideCommand mockDivideCommand;
+    @Mock
+    private CancelCommand mockCancelCommand;
 
 
     private Calculator calculator;
 
     @Before
     public void setUp() throws Exception {
-        calculator = new Calculator(mockAddCommand, mockSubtractCommand, mockMultiplicationCommand, mockDivideCommand);
+        calculator = new Calculator(mockAddCommand, mockSubtractCommand,
+                mockMultiplicationCommand, mockDivideCommand, mockCancelCommand);
     }
 
     @Test
@@ -53,5 +56,12 @@ public class CalculatorTest {
         calculator.execute("divide", 3.0);
 
         Mockito.verify(mockDivideCommand).execute(Matchers.any(Double.class), Matchers.any(Double.class));
+    }
+
+    @Test
+    public void shouldPerformResetOnCancelCommand() {
+        calculator.execute("cancel");
+
+        Mockito.verify(mockCancelCommand).execute(Matchers.any(Double.class), Matchers.any(Double.class));
     }
 }
