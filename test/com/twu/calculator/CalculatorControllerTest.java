@@ -30,4 +30,17 @@ public class CalculatorControllerTest {
         Mockito.verify(mockCalculatorView, times(1)).read();
         Mockito.verify(mockCalculator, times(1)).execute("add", 2.0);
     }
+
+    @Test
+    public void shouldExecuteTheCancelCommand() {
+        CalculatorController calculatorController = new CalculatorController(mockCalculator, mockCalculatorView);
+
+        when(mockCalculatorView.read()).thenReturn("cancel");
+
+        calculatorController.commandParser();
+
+
+        Mockito.verify(mockCalculatorView, times(1)).read();
+        Mockito.verify(mockCalculator, times(1)).execute("cancel", 0.0);
+    }
 }
