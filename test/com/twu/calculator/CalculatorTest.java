@@ -34,34 +34,34 @@ public class CalculatorTest {
     public void shouldPerformAdditionOnAddCommand() {
         calculator.execute("add", 1.0);
 
-        Mockito.verify(mockAddCommand).execute(Matchers.any(Double.class), Matchers.any(Double.class));
+        Mockito.verify(mockAddCommand).execute(0.0, 1.0);
     }
 
     @Test
     public void shouldPerformSubtractionOnSubtractCommand() {
         calculator.execute("subtract", 3.0);
 
-        Mockito.verify(mockSubtractCommand).execute(Matchers.any(Double.class), Matchers.any(Double.class));
+        Mockito.verify(mockSubtractCommand).execute(0.0, 3.0);
     }
 
     @Test
     public void shouldPerformMultiplicationOnMultiplyCommand() {
         calculator.execute("multiply", 3.0);
 
-        Mockito.verify(mockMultiplicationCommand).execute(Matchers.any(Double.class), Matchers.any(Double.class));
+        Mockito.verify(mockMultiplicationCommand).execute(0.0, 3.0);
     }
 
     @Test
     public void shouldPerformDivisionOnDivideCommand() {
         calculator.execute("divide", 3.0);
 
-        Mockito.verify(mockDivideCommand).execute(Matchers.any(Double.class), Matchers.any(Double.class));
+        Mockito.verify(mockDivideCommand).execute(0.0, 3.0);
     }
 
     @Test
     public void shouldPerformResetOnCancelCommand() {
         calculator.execute("cancel");
 
-        Mockito.verify(mockCancelCommand).execute(Matchers.any(Double.class), Matchers.any(Double.class));
+        Mockito.verify(mockCancelCommand).execute(0.0, 0.0);
     }
 }
