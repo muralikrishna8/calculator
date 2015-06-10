@@ -26,10 +26,4 @@ public class Calculator {
         this.result = executable.execute(result, operand);
         calculatorView.print(result+"");
     }
-
-    public void execute(String command) {
-        Executable executable = commandActionMap.get(command);
-        this.result = executable.execute(0.0, 0.0);
-        calculatorView.print(result+"");
-    }
 }

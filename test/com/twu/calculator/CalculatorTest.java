@@ -61,11 +61,4 @@ public class CalculatorTest {
 
         Mockito.verify(mockDivideCommand).execute(0.0, 3.0);
     }
-
-    @Test
-    public void shouldPerformResetOnCancelCommand() {
-        calculator.execute("cancel");
-
-        Mockito.verify(mockCancelCommand).execute(0.0, 0.0);
-    }
 }
