@@ -34,9 +34,11 @@ public class CalculatorController {
         CancelCommand cancelCommand = new CancelCommand();
         CalculatorView calculatorView = new CalculatorView();
         AbsoluteOperation absoluteOperation = new AbsoluteOperation();
+        NegativeOperation negativeOperation = new NegativeOperation();
 
         Calculator calculator = new Calculator(addCommand, subtractCommand, multiplyCommand,
-                                    divideCommand, cancelCommand, calculatorView, absoluteOperation);
+                                    divideCommand, cancelCommand, calculatorView, absoluteOperation,
+                                    negativeOperation);
 
         CalculatorController calculatorController = new CalculatorController(calculator, calculatorView);
         calculatorController.execute();

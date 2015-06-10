@@ -23,6 +23,8 @@ public class CalculatorTest {
     private CalculatorView mockCalculatorView;
     @Mock
     private AbsoluteOperation mockAbsoluteOperation;
+    @Mock
+    private NegativeOperation mockNegativeOperation;
 
 
     private Calculator calculator;
@@ -32,7 +34,7 @@ public class CalculatorTest {
         calculator = new Calculator(mockAddCommand, mockSubtractCommand,
                 mockMultiplicationCommand, mockDivideCommand,
                 mockCancelCommand, mockCalculatorView,
-                mockAbsoluteOperation);
+                mockAbsoluteOperation, mockNegativeOperation);
     }
 
     @Test
