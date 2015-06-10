@@ -37,10 +37,12 @@ public class CalculatorController {
         NegativeOperation negativeOperation = new NegativeOperation();
         SquareOperation squareOperation = new SquareOperation();
         SquareRootOperation squareRootOperation = new SquareRootOperation();
+        CubeOperation cubeOperation = new CubeOperation();
 
         Calculator calculator = new Calculator(addCommand, subtractCommand, multiplyCommand,
                                     divideCommand, cancelCommand, calculatorView, absoluteOperation,
-                                    negativeOperation, squareOperation, squareRootOperation);
+                                    negativeOperation, squareOperation, squareRootOperation,
+                                    cubeOperation);
 
         CalculatorController calculatorController = new CalculatorController(calculator, calculatorView);
         calculatorController.execute();

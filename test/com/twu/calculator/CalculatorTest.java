@@ -29,6 +29,8 @@ public class CalculatorTest {
     private SquareOperation mockSquareOperation;
     @Mock
     private SquareRootOperation mockSquareRootOperation;
+    @Mock
+    private CubeOperation mockCubeOperation;
 
 
     private Calculator calculator;
@@ -39,7 +41,8 @@ public class CalculatorTest {
                 mockMultiplicationCommand, mockDivideCommand,
                 mockCancelCommand, mockCalculatorView,
                 mockAbsoluteOperation, mockNegativeOperation,
-                mockSquareOperation, mockSquareRootOperation);
+                mockSquareOperation, mockSquareRootOperation,
+                mockCubeOperation);
     }
 
     @Test
