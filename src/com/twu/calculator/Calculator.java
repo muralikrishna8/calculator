@@ -12,7 +12,7 @@ public class Calculator {
                       MultiplyCommand multiplyCommand, DivideCommand divideCommand,
                       CancelCommand cancelCommand, CalculatorView calculatorView,
                       AbsoluteOperation absoluteOperation, NegativeOperation negativeOperation,
-                      SquareOperation squareOperation) {
+                      SquareOperation squareOperation, SquareRootOperation squareRootOperation) {
         arithmeticOperationMap = new HashMap<>();
         arithmeticOperationMap.put("add", addCommand);
         arithmeticOperationMap.put("subtract", subtractCommand);
@@ -22,6 +22,7 @@ public class Calculator {
         arithmeticOperationMap.put("abs", absoluteOperation);
         arithmeticOperationMap.put("neg", negativeOperation);
         arithmeticOperationMap.put("sqr", squareOperation);
+        arithmeticOperationMap.put("sqrt", squareRootOperation);
 
         this.calculatorView = calculatorView;
     }
