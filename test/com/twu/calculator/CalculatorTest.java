@@ -7,6 +7,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorTest {
     @Mock
@@ -39,12 +42,19 @@ public class CalculatorTest {
 
     @Before
     public void setUp() throws Exception {
-        calculator = new Calculator(mockAddOperation, mockSubtractOperation,
-                mockMultiplicationCommand, mockDivideOperation,
-                mockCancelOperation, mockCalculatorView,
-                mockAbsoluteOperation, mockNegativeOperation,
-                mockSquareOperation, mockSquareRootOperation,
-                mockCubeOperation, mockCubeRootOperation);
+        Map<String, ArithmeticOperation> arithmeticOperationMap = new HashMap<>();
+        arithmeticOperationMap.put("add", mockAddOperation);
+        arithmeticOperationMap.put("subtract", mockSubtractOperation);
+        arithmeticOperationMap.put("multiply", mockMultiplicationCommand);
+        arithmeticOperationMap.put("divide", mockDivideOperation);
+        arithmeticOperationMap.put("cancel", mockCancelOperation);
+        arithmeticOperationMap.put("abs", mockAbsoluteOperation);
+        arithmeticOperationMap.put("neg", mockNegativeOperation);
+        arithmeticOperationMap.put("sqr", mockSquareOperation);
+        arithmeticOperationMap.put("sqrt", mockSquareRootOperation);
+        arithmeticOperationMap.put("cube", mockCubeOperation);
+        arithmeticOperationMap.put("cubert", mockCubeRootOperation);
+        calculator = new Calculator(mockCalculatorView, arithmeticOperationMap);
     }
 
     @Test

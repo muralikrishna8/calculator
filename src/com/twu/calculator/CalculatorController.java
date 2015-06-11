@@ -1,5 +1,8 @@
 package com.twu.calculator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CalculatorController {
     CalculatorView calculatorView;
     Calculator calculator;
@@ -41,10 +44,21 @@ public class CalculatorController {
         CubeOperation cubeOperation = new CubeOperation();
         CubeRootOperation cubeRootOperation = new CubeRootOperation();
 
-        Calculator calculator = new Calculator(addOperation, subtractOperation, multiplyOperation,
-                divideOperation, cancelOperation, calculatorView, absoluteOperation,
-                                    negativeOperation, squareOperation, squareRootOperation,
-                                    cubeOperation, cubeRootOperation);
+
+        Map<String, ArithmeticOperation> arithmeticOperationMap = new HashMap<>();
+        arithmeticOperationMap.put("add", addOperation);
+        arithmeticOperationMap.put("subtract", subtractOperation);
+        arithmeticOperationMap.put("multiply", multiplyOperation);
+        arithmeticOperationMap.put("divide", divideOperation);
+        arithmeticOperationMap.put("cancel", cancelOperation);
+        arithmeticOperationMap.put("abs", absoluteOperation);
+        arithmeticOperationMap.put("neg", negativeOperation);
+        arithmeticOperationMap.put("sqr", squareOperation);
+        arithmeticOperationMap.put("sqrt", squareRootOperation);
+        arithmeticOperationMap.put("cube", cubeOperation);
+        arithmeticOperationMap.put("cubert", cubeRootOperation);
+
+        Calculator calculator = new Calculator(calculatorView, arithmeticOperationMap);
 
         CalculatorController calculatorController = new CalculatorController(calculator, calculatorView);
         calculatorController.execute();
