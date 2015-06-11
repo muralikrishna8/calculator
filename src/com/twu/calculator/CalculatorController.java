@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CalculatorController {
-    CalculatorView calculatorView;
-    CalculatorModel calculatorModel;
+    private CalculatorView calculatorView;
+    private CalculatorModel calculatorModel;
 
     public CalculatorController(CalculatorModel calculatorModel, CalculatorView calculatorView){
         this.calculatorModel = calculatorModel;
