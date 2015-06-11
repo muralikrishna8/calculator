@@ -5,12 +5,12 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class NegativeOperationTest {
+public class NegativeTest {
     @Test
     public void shouldNegateTheAccumulator() {
-        NegativeOperation negativeOperation = new NegativeOperation();
+        Negative negative = new Negative();
 
-        double actualAccumulator = negativeOperation.execute(6.0, 0.0);
+        double actualAccumulator = negative.execute(6.0, 0.0);
 
         assertThat(actualAccumulator, is(-6.0));
     }

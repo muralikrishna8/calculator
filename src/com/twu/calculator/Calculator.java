@@ -1,20 +1,19 @@
 package com.twu.calculator;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Calculator {
     private double result;
-    private Map<String, ArithmeticOperation> arithmeticOperationMap;
+    private Map<String, ArithmeticOperation> operations;
     private CalculatorView calculatorView;
 
-    public Calculator(CalculatorView calculatorView, Map<String, ArithmeticOperation> arithmeticOperationMap) {
+    public Calculator(CalculatorView calculatorView, Map<String, ArithmeticOperation> operations) {
         this.calculatorView = calculatorView;
-        this.arithmeticOperationMap = arithmeticOperationMap;
+        this.operations = operations;
     }
 
     public void execute(String command, double operand) {
-        ArithmeticOperation arithmeticOperation = arithmeticOperationMap.get(command);
+        ArithmeticOperation arithmeticOperation = operations.get(command);
         this.result = arithmeticOperation.execute(result, operand);
         calculatorView.print(result+"");
     }

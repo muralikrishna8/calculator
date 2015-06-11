@@ -5,12 +5,12 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class CubeRootOperationTest {
+public class SquareRootTest {
     @Test
     public void shouldDivideTwoOperands() throws Exception {
-        CubeRootOperation cubeRootOperation = new CubeRootOperation();
+       SquareRoot squareRoot = new SquareRoot();
 
-        double actualAccumulator = cubeRootOperation.execute(64.0, 0.0);
+        double actualAccumulator = squareRoot.execute(16.0, 0.0);
 
         assertThat(actualAccumulator, is(4.0));
     }

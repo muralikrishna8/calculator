@@ -2,6 +2,7 @@ package com.twu.calculator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class CalculatorController {
     CalculatorView calculatorView;
@@ -31,34 +32,34 @@ public class CalculatorController {
     }
 
     public static void main(String[] args) {
-        AddOperation addOperation = new AddOperation();
-        SubtractOperation subtractOperation = new SubtractOperation();
-        MultiplyOperation multiplyOperation = new MultiplyOperation();
-        DivideOperation divideOperation = new DivideOperation();
-        CancelOperation cancelOperation = new CancelOperation();
-        CalculatorView calculatorView = new CalculatorView();
-        AbsoluteOperation absoluteOperation = new AbsoluteOperation();
-        NegativeOperation negativeOperation = new NegativeOperation();
-        SquareOperation squareOperation = new SquareOperation();
-        SquareRootOperation squareRootOperation = new SquareRootOperation();
-        CubeOperation cubeOperation = new CubeOperation();
-        CubeRootOperation cubeRootOperation = new CubeRootOperation();
+        Add add = new Add();
+        Subtract subtract = new Subtract();
+        Multiply multiply = new Multiply();
+        Divide divide = new Divide();
+        Cancel cancel = new Cancel();
+        Absolute absolute = new Absolute();
+        Negative negative = new Negative();
+        Square square = new Square();
+        SquareRoot squareRoot = new SquareRoot();
+        Cube cube = new Cube();
+        CubeRoot cubeRoot = new CubeRoot();
+        CalculatorView calculatorView = new CalculatorView(new Scanner(System.in));
 
 
-        Map<String, ArithmeticOperation> arithmeticOperationMap = new HashMap<>();
-        arithmeticOperationMap.put("add", addOperation);
-        arithmeticOperationMap.put("subtract", subtractOperation);
-        arithmeticOperationMap.put("multiply", multiplyOperation);
-        arithmeticOperationMap.put("divide", divideOperation);
-        arithmeticOperationMap.put("cancel", cancelOperation);
-        arithmeticOperationMap.put("abs", absoluteOperation);
-        arithmeticOperationMap.put("neg", negativeOperation);
-        arithmeticOperationMap.put("sqr", squareOperation);
-        arithmeticOperationMap.put("sqrt", squareRootOperation);
-        arithmeticOperationMap.put("cube", cubeOperation);
-        arithmeticOperationMap.put("cubert", cubeRootOperation);
+        Map<String, ArithmeticOperation> operations = new HashMap<>();
+        operations.put("add", add);
+        operations.put("subtract", subtract);
+        operations.put("multiply", multiply);
+        operations.put("divide", divide);
+        operations.put("cancel", cancel);
+        operations.put("abs", absolute);
+        operations.put("neg", negative);
+        operations.put("sqr", square);
+        operations.put("sqrt", squareRoot);
+        operations.put("cube", cube);
+        operations.put("cubert", cubeRoot);
 
-        Calculator calculator = new Calculator(calculatorView, arithmeticOperationMap);
+        Calculator calculator = new Calculator(calculatorView, operations);
 
         CalculatorController calculatorController = new CalculatorController(calculator, calculatorView);
         calculatorController.execute();

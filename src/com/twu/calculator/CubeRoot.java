@@ -1,8 +1,8 @@
 package com.twu.calculator;
 
-public class NegativeOperation implements ArithmeticOperation {
+public class CubeRoot implements ArithmeticOperation {
     @Override
     public double execute(double a, double b) {
-        return -a;
+        return Math.cbrt(a);
     }
 }

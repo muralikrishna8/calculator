@@ -13,29 +13,29 @@ import java.util.Map;
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorTest {
     @Mock
-    private AddOperation mockAddOperation;
+    private Add mockAdd;
     @Mock
-    private SubtractOperation mockSubtractOperation;
+    private Subtract mockSubtract;
     @Mock
-    private MultiplyOperation mockMultiplicationCommand;
+    private Multiply mockMultiplicationCommand;
     @Mock
-    private DivideOperation mockDivideOperation;
+    private Divide mockDivide;
     @Mock
-    private CancelOperation mockCancelOperation;
+    private Cancel mockCancel;
     @Mock
     private CalculatorView mockCalculatorView;
     @Mock
-    private AbsoluteOperation mockAbsoluteOperation;
+    private Absolute mockAbsolute;
     @Mock
-    private NegativeOperation mockNegativeOperation;
+    private Negative mockNegative;
     @Mock
-    private SquareOperation mockSquareOperation;
+    private Square mockSquare;
     @Mock
-    private SquareRootOperation mockSquareRootOperation;
+    private SquareRoot mockSquareRoot;
     @Mock
-    private CubeOperation mockCubeOperation;
+    private Cube mockCube;
     @Mock
-    private CubeRootOperation mockCubeRootOperation;
+    private CubeRoot mockCubeRoot;
 
 
     private Calculator calculator;
@@ -43,17 +43,17 @@ public class CalculatorTest {
     @Before
     public void setUp() throws Exception {
         Map<String, ArithmeticOperation> arithmeticOperationMap = new HashMap<>();
-        arithmeticOperationMap.put("add", mockAddOperation);
-        arithmeticOperationMap.put("subtract", mockSubtractOperation);
+        arithmeticOperationMap.put("add", mockAdd);
+        arithmeticOperationMap.put("subtract", mockSubtract);
         arithmeticOperationMap.put("multiply", mockMultiplicationCommand);
-        arithmeticOperationMap.put("divide", mockDivideOperation);
-        arithmeticOperationMap.put("cancel", mockCancelOperation);
-        arithmeticOperationMap.put("abs", mockAbsoluteOperation);
-        arithmeticOperationMap.put("neg", mockNegativeOperation);
-        arithmeticOperationMap.put("sqr", mockSquareOperation);
-        arithmeticOperationMap.put("sqrt", mockSquareRootOperation);
-        arithmeticOperationMap.put("cube", mockCubeOperation);
-        arithmeticOperationMap.put("cubert", mockCubeRootOperation);
+        arithmeticOperationMap.put("divide", mockDivide);
+        arithmeticOperationMap.put("cancel", mockCancel);
+        arithmeticOperationMap.put("abs", mockAbsolute);
+        arithmeticOperationMap.put("neg", mockNegative);
+        arithmeticOperationMap.put("sqr", mockSquare);
+        arithmeticOperationMap.put("sqrt", mockSquareRoot);
+        arithmeticOperationMap.put("cube", mockCube);
+        arithmeticOperationMap.put("cubert", mockCubeRoot);
         calculator = new Calculator(mockCalculatorView, arithmeticOperationMap);
     }
 
@@ -61,14 +61,14 @@ public class CalculatorTest {
     public void shouldPerformAdditionOnAddCommand() {
         calculator.execute("add", 1.0);
 
-        Mockito.verify(mockAddOperation).execute(0.0, 1.0);
+        Mockito.verify(mockAdd).execute(0.0, 1.0);
     }
 
     @Test
     public void shouldPerformSubtractionOnSubtractCommand() {
         calculator.execute("subtract", 3.0);
 
-        Mockito.verify(mockSubtractOperation).execute(0.0, 3.0);
+        Mockito.verify(mockSubtract).execute(0.0, 3.0);
     }
 
     @Test
@@ -82,6 +82,6 @@ public class CalculatorTest {
     public void shouldPerformDivisionOnDivideCommand() {
         calculator.execute("divide", 3.0);
 
-        Mockito.verify(mockDivideOperation).execute(0.0, 3.0);
+        Mockito.verify(mockDivide).execute(0.0, 3.0);
     }
 }

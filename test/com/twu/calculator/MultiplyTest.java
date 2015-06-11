@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class MultiplyOperationTest {
+public class MultiplyTest {
     @Test
     public void shouldMultiplyTwoOperands() throws Exception {
-        ArithmeticOperation multiplyCommand = new MultiplyOperation();
+        ArithmeticOperation multiplyCommand = new Multiply();
 
         double actualTotal = multiplyCommand.execute(2.0, 3.0);
 

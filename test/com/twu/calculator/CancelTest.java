@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class CancelOperationTest {
+public class CancelTest {
     @Test
     public void shouldResetTheResultToZero() {
-        ArithmeticOperation cancelCommand = new CancelOperation();
+        ArithmeticOperation cancelCommand = new Cancel();
 
         double actualTotal = cancelCommand.execute(0.0, 0.0);
 

@@ -1,8 +1,8 @@
 package com.twu.calculator;
 
-public class AbsoluteOperation implements ArithmeticOperation {
+public class Cube implements ArithmeticOperation {
     @Override
     public double execute(double a, double b) {
-        return Math.abs(a);
+        return Math.pow(a, 3.0);
     }
 }

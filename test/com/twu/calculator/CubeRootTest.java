@@ -5,13 +5,13 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class DivideOperationTest {
+public class CubeRootTest {
     @Test
     public void shouldDivideTwoOperands() throws Exception {
-        ArithmeticOperation divideCommand = new DivideOperation();
+        CubeRoot cubeRoot = new CubeRoot();
 
-        double actualTotal = divideCommand.execute(6.0, 3.0);
+        double actualAccumulator = cubeRoot.execute(64.0, 0.0);
 
-        assertThat(actualTotal, is(2.0));
+        assertThat(actualAccumulator, is(4.0));
     }
 }
