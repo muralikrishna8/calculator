@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class DivideCommandTest {
+public class DivideOperationTest {
     @Test
     public void shouldDivideTwoOperands() throws Exception {
-        ArithmeticOperation divideCommand = new DivideCommand();
+        ArithmeticOperation divideCommand = new DivideOperation();
 
         double actualTotal = divideCommand.execute(6.0, 3.0);
 

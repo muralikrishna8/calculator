@@ -17,6 +17,7 @@ public class CalculatorController {
         while(!input.equals("exit")) {
             String[] token = input.split(" ");
             operatorName = token[0];
+            operand = 0.0;
             if (token.length == 2) {
                 operand = Double.parseDouble(token[1]);
             }
@@ -27,11 +28,11 @@ public class CalculatorController {
     }
 
     public static void main(String[] args) {
-        AddCommand addCommand = new AddCommand();
-        SubtractCommand subtractCommand = new SubtractCommand();
-        MultiplyCommand multiplyCommand = new MultiplyCommand();
-        DivideCommand divideCommand = new DivideCommand();
-        CancelCommand cancelCommand = new CancelCommand();
+        AddOperation addOperation = new AddOperation();
+        SubtractOperation subtractOperation = new SubtractOperation();
+        MultiplyOperation multiplyOperation = new MultiplyOperation();
+        DivideOperation divideOperation = new DivideOperation();
+        CancelOperation cancelOperation = new CancelOperation();
         CalculatorView calculatorView = new CalculatorView();
         AbsoluteOperation absoluteOperation = new AbsoluteOperation();
         NegativeOperation negativeOperation = new NegativeOperation();
@@ -40,8 +41,8 @@ public class CalculatorController {
         CubeOperation cubeOperation = new CubeOperation();
         CubeRootOperation cubeRootOperation = new CubeRootOperation();
 
-        Calculator calculator = new Calculator(addCommand, subtractCommand, multiplyCommand,
-                                    divideCommand, cancelCommand, calculatorView, absoluteOperation,
+        Calculator calculator = new Calculator(addOperation, subtractOperation, multiplyOperation,
+                divideOperation, cancelOperation, calculatorView, absoluteOperation,
                                     negativeOperation, squareOperation, squareRootOperation,
                                     cubeOperation, cubeRootOperation);
 

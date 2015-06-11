@@ -1,8 +1,8 @@
 package com.twu.calculator;
 
-public class DivideCommand implements ArithmeticOperation {
+public class AddOperation implements ArithmeticOperation {
     @Override
     public double execute(double operandOne, double operandTwo) {
-        return operandOne / operandTwo;
+        return operandOne + operandTwo;
     }
 }

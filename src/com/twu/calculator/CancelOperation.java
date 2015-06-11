@@ -1,6 +1,6 @@
 package com.twu.calculator;
 
-public class CancelCommand implements ArithmeticOperation {
+public class CancelOperation implements ArithmeticOperation {
 
     @Override
     public double execute(double a, double b) {

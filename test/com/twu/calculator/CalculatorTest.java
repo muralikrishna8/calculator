@@ -10,15 +10,15 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorTest {
     @Mock
-    private AddCommand mockAddCommand;
+    private AddOperation mockAddOperation;
     @Mock
-    private SubtractCommand mockSubtractCommand;
+    private SubtractOperation mockSubtractOperation;
     @Mock
-    private MultiplyCommand mockMultiplicationCommand;
+    private MultiplyOperation mockMultiplicationCommand;
     @Mock
-    private DivideCommand mockDivideCommand;
+    private DivideOperation mockDivideOperation;
     @Mock
-    private CancelCommand mockCancelCommand;
+    private CancelOperation mockCancelOperation;
     @Mock
     private CalculatorView mockCalculatorView;
     @Mock
@@ -39,9 +39,9 @@ public class CalculatorTest {
 
     @Before
     public void setUp() throws Exception {
-        calculator = new Calculator(mockAddCommand, mockSubtractCommand,
-                mockMultiplicationCommand, mockDivideCommand,
-                mockCancelCommand, mockCalculatorView,
+        calculator = new Calculator(mockAddOperation, mockSubtractOperation,
+                mockMultiplicationCommand, mockDivideOperation,
+                mockCancelOperation, mockCalculatorView,
                 mockAbsoluteOperation, mockNegativeOperation,
                 mockSquareOperation, mockSquareRootOperation,
                 mockCubeOperation, mockCubeRootOperation);
@@ -51,14 +51,14 @@ public class CalculatorTest {
     public void shouldPerformAdditionOnAddCommand() {
         calculator.execute("add", 1.0);
 
-        Mockito.verify(mockAddCommand).execute(0.0, 1.0);
+        Mockito.verify(mockAddOperation).execute(0.0, 1.0);
     }
 
     @Test
     public void shouldPerformSubtractionOnSubtractCommand() {
         calculator.execute("subtract", 3.0);
 
-        Mockito.verify(mockSubtractCommand).execute(0.0, 3.0);
+        Mockito.verify(mockSubtractOperation).execute(0.0, 3.0);
     }
 
     @Test
@@ -72,6 +72,6 @@ public class CalculatorTest {
     public void shouldPerformDivisionOnDivideCommand() {
         calculator.execute("divide", 3.0);
 
-        Mockito.verify(mockDivideCommand).execute(0.0, 3.0);
+        Mockito.verify(mockDivideOperation).execute(0.0, 3.0);
     }
 }

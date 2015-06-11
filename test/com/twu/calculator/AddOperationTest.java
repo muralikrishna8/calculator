@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class AddCommandTest {
+public class AddOperationTest {
     @Test
     public void shouldAddTwoOperands() throws Exception {
-        ArithmeticOperation addCommand = new AddCommand();
+        ArithmeticOperation addCommand = new AddOperation();
 
         double actualTotal = addCommand.execute(1.0, 3.0);
 
