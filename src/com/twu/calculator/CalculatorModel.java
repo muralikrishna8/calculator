@@ -2,12 +2,12 @@ package com.twu.calculator;
 
 import java.util.Map;
 
-public class Calculator {
+public class CalculatorModel {
     private double result;
     private Map<String, ArithmeticOperation> operations;
     private CalculatorView calculatorView;
 
-    public Calculator(CalculatorView calculatorView, Map<String, ArithmeticOperation> operations) {
+    public CalculatorModel(CalculatorView calculatorView, Map<String, ArithmeticOperation> operations) {
         this.calculatorView = calculatorView;
         this.operations = operations;
     }

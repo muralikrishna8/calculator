@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class CalculatorController {
     CalculatorView calculatorView;
-    Calculator calculator;
+    CalculatorModel calculatorModel;
     private String operatorName;
     private double operand;
     private String input;
 
-    public CalculatorController(Calculator calculator, CalculatorView calculatorView){
-        this.calculator = calculator;
+    public CalculatorController(CalculatorModel calculatorModel, CalculatorView calculatorView){
+        this.calculatorModel = calculatorModel;
         this.calculatorView = calculatorView;
     }
 
@@ -22,13 +22,18 @@ public class CalculatorController {
             String[] token = input.split(" ");
             operatorName = token[0];
             operand = 0.0;
-            if (token.length == 2) {
+
+            if (inputHasTwoWords(token)) {
                 operand = Double.parseDouble(token[1]);
             }
-            calculator.execute(operatorName, operand);
+            calculatorModel.execute(operatorName, operand);
 
             input = calculatorView.read();
         }
+    }
+
+    private boolean inputHasTwoWords(String[] token) {
+        return token.length == 2;
     }
 
     public static void main(String[] args) {
@@ -59,9 +64,9 @@ public class CalculatorController {
         operations.put("cube", cube);
         operations.put("cubert", cubeRoot);
 
-        Calculator calculator = new Calculator(calculatorView, operations);
+        CalculatorModel calculatorModel = new CalculatorModel(calculatorView, operations);
 
-        CalculatorController calculatorController = new CalculatorController(calculator, calculatorView);
+        CalculatorController calculatorController = new CalculatorController(calculatorModel, calculatorView);
         calculatorController.execute();
     }
 }

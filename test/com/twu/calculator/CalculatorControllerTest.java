@@ -14,30 +14,30 @@ import static org.mockito.Mockito.when;
 public class CalculatorControllerTest {
 
     @Mock
-    Calculator mockCalculator;
+    CalculatorModel mockCalculatorModel;
     @Mock
     CalculatorView mockCalculatorView;
 
     @Test
     public void shouldPerformGivenOperationsAndExit() {
-        CalculatorController calculatorController = new CalculatorController(mockCalculator, mockCalculatorView);
+        CalculatorController calculatorController = new CalculatorController(mockCalculatorModel, mockCalculatorView);
         when(mockCalculatorView.read()).thenReturn("add 2", "multiply 3", "exit");
 
         calculatorController.execute();
 
         verify(mockCalculatorView, times(3)).read();
-        verify(mockCalculator, times(2)).execute(Matchers.any(String.class), Matchers.any(Double.class));
+        verify(mockCalculatorModel, times(2)).execute(Matchers.any(String.class), Matchers.any(Double.class));
     }
 
     @Test
     public void shouldExitWhenExitCommandPassed() {
-        CalculatorController calculatorController = new CalculatorController(mockCalculator, mockCalculatorView);
+        CalculatorController calculatorController = new CalculatorController(mockCalculatorModel, mockCalculatorView);
         when(mockCalculatorView.read()).thenReturn("exit");
 
         calculatorController.execute();
 
         verify(mockCalculatorView, times(1)).read();
-        verify(mockCalculator, times(0)).execute("exit", 0.0);
+        verify(mockCalculatorModel, times(0)).execute("exit", 0.0);
     }
 
 }
