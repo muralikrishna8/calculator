@@ -7,9 +7,6 @@ import java.util.Scanner;
 public class CalculatorController {
     CalculatorView calculatorView;
     CalculatorModel calculatorModel;
-    private String operatorName;
-    private double operand;
-    private String input;
 
     public CalculatorController(CalculatorModel calculatorModel, CalculatorView calculatorView){
         this.calculatorModel = calculatorModel;
@@ -17,11 +14,11 @@ public class CalculatorController {
     }
 
     public void execute() {
-        input = calculatorView.read();
+        String input = calculatorView.read();
         while(!input.equals("exit")) {
             String[] token = input.split(" ");
-            operatorName = token[0];
-            operand = 0.0;
+            String operatorName = token[0];
+            double operand = 0.0;
 
             if (inputHasTwoWords(token)) {
                 operand = Double.parseDouble(token[1]);
