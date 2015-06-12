@@ -17,8 +17,6 @@ import static org.hamcrest.core.Is.is;
 @RunWith(MockitoJUnitRunner.class)
 public class ModelTest {
     @Mock
-    private Subtract mockSubtract;
-    @Mock
     private Multiply mockMultiplicationCommand;
     @Mock
     private Divide mockDivide;
@@ -45,7 +43,6 @@ public class ModelTest {
     @Before
     public void setUp() throws Exception {
         Map<String, ArithmeticOperation> arithmeticOperationMap = new HashMap<>();
-        arithmeticOperationMap.put("subtract", mockSubtract);
         arithmeticOperationMap.put("multiply", mockMultiplicationCommand);
         arithmeticOperationMap.put("divide", mockDivide);
         arithmeticOperationMap.put("cancel", mockCancel);
@@ -66,11 +63,12 @@ public class ModelTest {
     }
 
     @Test
-    public void shouldPerformSubtractionOnSubtractCommand() {
-        model.execute("subtract", 3.0);
+    public void shouldSubtractTwoOperands() throws Exception {
+        double actualTotal = model.subtract(4);
 
-        Mockito.verify(mockSubtract).execute(0.0, 3.0);
+        Assert.assertThat(actualTotal, is(-4.0));
     }
+
 
     @Test
     public void shouldPerformMultiplicationOnMultiplyCommand() {
