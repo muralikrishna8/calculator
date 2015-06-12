@@ -21,8 +21,14 @@ public class Model {
         accumulator += operand;
         return accumulator;
     }
+
     public double subtract(double operand) {
         accumulator -= operand;
+        return accumulator;
+    }
+
+    public double multiply(double operand) {
+        accumulator *= operand;
         return accumulator;
     }
 
