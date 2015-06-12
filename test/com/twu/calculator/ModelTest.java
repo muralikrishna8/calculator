@@ -17,8 +17,6 @@ import static org.hamcrest.core.Is.is;
 @RunWith(MockitoJUnitRunner.class)
 public class ModelTest {
     @Mock
-    private Divide mockDivide;
-    @Mock
     private Cancel mockCancel;
     @Mock
     private View mockView;
@@ -39,9 +37,8 @@ public class ModelTest {
     private Model model;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
         Map<String, ArithmeticOperation> arithmeticOperationMap = new HashMap<>();
-        arithmeticOperationMap.put("divide", mockDivide);
         arithmeticOperationMap.put("cancel", mockCancel);
         arithmeticOperationMap.put("abs", mockAbsolute);
         arithmeticOperationMap.put("neg", mockNegative);
@@ -53,34 +50,32 @@ public class ModelTest {
     }
 
     @Test
-    public void shouldAddTwoOperands() throws Exception {
+    public void shouldAddTwoOperands(){
         double actualTotal = model.add(4);
 
         Assert.assertThat(actualTotal, is(4.0));
     }
 
     @Test
-    public void shouldSubtractTwoOperands() throws Exception {
+    public void shouldSubtractTwoOperands(){
         double actualTotal = model.subtract(4);
 
         Assert.assertThat(actualTotal, is(-4.0));
     }
     @Test
-    public void shouldMultiplyTwoOperands() throws Exception {
+    public void shouldMultiplyTwoOperands(){
         double actualTotal = model.multiply(4);
 
         Assert.assertThat(actualTotal, is(0.0));
     }
-
-
-
+    
     @Test
-    public void shouldPerformDivisionOnDivideCommand() {
-        model.execute("divide", 3.0);
+    public void shouldDivideTwoOperands(){
+        double actualTotal = model.divide(4);
 
-        Mockito.verify(mockDivide).execute(0.0, 3.0);
+        Assert.assertThat(actualTotal, is(0.0));
     }
-
+    
     @Test
     public void shouldGiveTheFormattedAccumulator() {
         String actualAccumulator = model.formattedAccumulator();

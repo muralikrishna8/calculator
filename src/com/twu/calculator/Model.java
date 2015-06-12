@@ -31,6 +31,10 @@ public class Model {
         accumulator *= operand;
         return accumulator;
     }
+    public double divide(double operand) {
+        accumulator /= operand;
+        return accumulator;
+    }
 
     public String formattedAccumulator() {
         return "" + accumulator;
