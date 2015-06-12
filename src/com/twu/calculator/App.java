@@ -5,40 +5,68 @@ import java.util.ArrayList;
 public class App {
     private View view;
     private Model model;
-    private ArrayList<String> previousOperations;
+    private ArrayList<String> history;
 
-    public App(Model model, View view,
-               ArrayList<String> previousOperations) {
+    public App(Model model, View view, ArrayList<String> history) {
         this.model = model;
         this.view = view;
-        this.previousOperations = previousOperations;
+        this.history = history;
     }
 
     public void start() {
-        int repeatCount = 0;
         String input;
         do {
-            view.print(model.formattedAccumulator());
-            input = view.read();
-            do {
-                if (repeatCount > 0) {
-                    input = previousOperations.get(previousOperations.size() - repeatCount);
-                    repeatCount--;
-                }
-                String[] token = input.split(" ");
-                String operatorName = token[0];
-                double operand = 0.0;
-
-                if (inputHasTwoWords(token)) {
-                    operand = Double.parseDouble(token[1]);
-                }
-                if (operatorName.equals("repeat")) {
-                    repeatCount = (int) operand;
-                } else if (!operatorName.equals("exit"))
-                    model.execute(operatorName, operand);
-            } while (repeatCount > 0);
-            previousOperations.add(input);
+            input = tokenizeAndDispatchAndStoringInHistory();
         } while (!input.equals("exit"));
+    }
+
+    private String tokenizeAndDispatchAndStoringInHistory() {
+        String input;
+        int repeatCount = 0;
+        view.print(model.formattedAccumulator());
+        input = view.read();
+        do {
+            if (repeatCount > 0) {
+                input = history.get(history.size() - repeatCount);
+                repeatCount--;
+            }
+            String[] tokens = splitInput(input);
+            String operator = getOperator(tokens);
+            double operand = typeCastAndGetOperand(tokens);
+            if (operator.equals("repeat")) {
+                repeatCount = (int) operand;
+            } else if (!operator.equals("exit"))
+                model.execute(operator, operand);
+        } while (repeatCount > 0);
+        history.add(input);
+        return input;
+    }
+
+    private double typeCastAndGetOperand(String[] tokens) {
+
+        if (inputHasTwoWords(tokens)) {
+            String operandAsString = getOperand(tokens);
+            return typeCastOperandToDouble(operandAsString);
+        }
+        return 0.0;
+    }
+
+    private double typeCastOperandToDouble(String operandAsString) {
+        double operand;
+        operand = Double.parseDouble(operandAsString);
+        return operand;
+    }
+
+    private String getOperand(String[] tokens) {
+        return tokens[1];
+    }
+
+    private String getOperator(String[] tokens) {
+        return tokens[0];
+    }
+
+    private String[] splitInput(String input) {
+        return input.split(" ");
     }
 
     private boolean inputHasTwoWords(String[] token) {
