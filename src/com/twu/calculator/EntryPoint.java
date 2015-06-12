@@ -20,7 +20,6 @@ public class EntryPoint {
 
     private static Map<String, ArithmeticOperation> initialiseOperations() {
         Map<String, ArithmeticOperation> operations = new HashMap<String, ArithmeticOperation>();
-        operations.put("add", new Add());
         operations.put("subtract", new Subtract());
         operations.put("multiply", new Multiply());
         operations.put("divide", new Divide());

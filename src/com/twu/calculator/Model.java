@@ -17,6 +17,11 @@ public class Model {
         this.accumulator = arithmeticOperation.execute(accumulator, operand);
     }
 
+    public double add(double operand) {
+        accumulator += operand;
+        return accumulator;
+    }
+
     public String formattedAccumulator() {
         return "" + accumulator;
     }

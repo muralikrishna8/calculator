@@ -1,5 +1,6 @@
 package com.twu.calculator;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +16,6 @@ import static org.hamcrest.core.Is.is;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ModelTest {
-    @Mock
-    private Add mockAdd;
     @Mock
     private Subtract mockSubtract;
     @Mock
@@ -46,7 +45,6 @@ public class ModelTest {
     @Before
     public void setUp() throws Exception {
         Map<String, ArithmeticOperation> arithmeticOperationMap = new HashMap<>();
-        arithmeticOperationMap.put("add", mockAdd);
         arithmeticOperationMap.put("subtract", mockSubtract);
         arithmeticOperationMap.put("multiply", mockMultiplicationCommand);
         arithmeticOperationMap.put("divide", mockDivide);
@@ -61,10 +59,10 @@ public class ModelTest {
     }
 
     @Test
-    public void shouldPerformAdditionOnAddCommand() {
-        model.execute("add", 1.0);
+    public void shouldAddTwoOperands() throws Exception {
+        double actualTotal = model.add(4);
 
-        Mockito.verify(mockAdd).execute(0.0, 1.0);
+        Assert.assertThat(actualTotal, is(4.0));
     }
 
     @Test
