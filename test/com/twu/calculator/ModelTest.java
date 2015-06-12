@@ -20,17 +20,6 @@ public class ModelTest {
     private Cancel mockCancel;
     @Mock
     private View mockView;
-    @Mock
-    private Absolute mockAbsolute;
-    @Mock
-    private Negative mockNegative;
-    @Mock
-    private SquareRoot mockSquareRoot;
-    @Mock
-    private Cube mockCube;
-    @Mock
-    private CubeRoot mockCubeRoot;
-
 
     private Model model;
 
@@ -38,11 +27,6 @@ public class ModelTest {
     public void setUp(){
         Map<String, ArithmeticOperation> arithmeticOperationMap = new HashMap<>();
         arithmeticOperationMap.put("cancel", mockCancel);
-        arithmeticOperationMap.put("abs", mockAbsolute);
-        arithmeticOperationMap.put("neg", mockNegative);
-        arithmeticOperationMap.put("sqrt", mockSquareRoot);
-        arithmeticOperationMap.put("cube", mockCube);
-        arithmeticOperationMap.put("cubert", mockCubeRoot);
         model = new Model(mockView, arithmeticOperationMap);
     }
 
@@ -81,6 +65,15 @@ public class ModelTest {
         double actualTotal = model.square();
 
         Assert.assertThat(actualTotal, is(16.0));
+    }
+
+    @Test
+    public void shouldResetTheCalculator() {
+        model.add(5);
+
+        double actualTotal = model.cancel();
+
+        assertThat(actualTotal, is(0.0));
     }
 
     @Test

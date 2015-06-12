@@ -41,6 +41,12 @@ public class Model {
         return multiply(accumulator);
     }
 
+    public double cancel() {
+        accumulator = 0.0;
+        return accumulator;
+    }
+
+
     public String formattedAccumulator() {
         return "" + accumulator;
     }

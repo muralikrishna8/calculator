@@ -21,12 +21,6 @@ public class EntryPoint {
     private static Map<String, ArithmeticOperation> initialiseOperations() {
         Map<String, ArithmeticOperation> operations = new HashMap<String, ArithmeticOperation>();
         operations.put("cancel", new Cancel());
-        operations.put("abs", new Absolute());
-        operations.put("neg", new Negative());
-        operations.put("sqr", new Square());
-        operations.put("sqrt", new SquareRoot());
-        operations.put("cube", new Cube());
-        operations.put("cubert", new CubeRoot());
         return operations;
     }
 }
