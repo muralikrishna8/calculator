@@ -12,7 +12,7 @@ import java.util.Scanner;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class CalculatorViewTest {
+public class ViewTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private ByteArrayInputStream byteArrayInputStream;
 
@@ -23,8 +23,8 @@ public class CalculatorViewTest {
 
     @Test
     public void shouldPrintTheResult() {
-        CalculatorView calculatorView = new CalculatorView(new Scanner(System.in));
-        calculatorView.print("5");
+        View view = new View(new Scanner(System.in));
+        view.print("5");
 
         assertEquals("5\n", outContent.toString());
     }
@@ -34,9 +34,9 @@ public class CalculatorViewTest {
         String input = "add 1";
         byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(byteArrayInputStream);
-        CalculatorView calculatorView = new CalculatorView(new Scanner(System.in));
+        View view = new View(new Scanner(System.in));
 
-        String actualInput = calculatorView.read();
+        String actualInput = view.read();
 
         assertThat(actualInput, is("add 1"));
     }

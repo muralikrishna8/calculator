@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CalculatorModelTest {
+public class ModelTest {
     @Mock
     private Add mockAdd;
     @Mock
@@ -26,7 +26,7 @@ public class CalculatorModelTest {
     @Mock
     private Cancel mockCancel;
     @Mock
-    private CalculatorView mockCalculatorView;
+    private View mockView;
     @Mock
     private Absolute mockAbsolute;
     @Mock
@@ -41,7 +41,7 @@ public class CalculatorModelTest {
     private CubeRoot mockCubeRoot;
 
 
-    private CalculatorModel calculatorModel;
+    private Model model;
 
     @Before
     public void setUp() throws Exception {
@@ -57,40 +57,40 @@ public class CalculatorModelTest {
         arithmeticOperationMap.put("sqrt", mockSquareRoot);
         arithmeticOperationMap.put("cube", mockCube);
         arithmeticOperationMap.put("cubert", mockCubeRoot);
-        calculatorModel = new CalculatorModel(mockCalculatorView, arithmeticOperationMap);
+        model = new Model(mockView, arithmeticOperationMap);
     }
 
     @Test
     public void shouldPerformAdditionOnAddCommand() {
-        calculatorModel.execute("add", 1.0);
+        model.execute("add", 1.0);
 
         Mockito.verify(mockAdd).execute(0.0, 1.0);
     }
 
     @Test
     public void shouldPerformSubtractionOnSubtractCommand() {
-        calculatorModel.execute("subtract", 3.0);
+        model.execute("subtract", 3.0);
 
         Mockito.verify(mockSubtract).execute(0.0, 3.0);
     }
 
     @Test
     public void shouldPerformMultiplicationOnMultiplyCommand() {
-        calculatorModel.execute("multiply", 3.0);
+        model.execute("multiply", 3.0);
 
         Mockito.verify(mockMultiplicationCommand).execute(0.0, 3.0);
     }
 
     @Test
     public void shouldPerformDivisionOnDivideCommand() {
-        calculatorModel.execute("divide", 3.0);
+        model.execute("divide", 3.0);
 
         Mockito.verify(mockDivide).execute(0.0, 3.0);
     }
 
     @Test
     public void shouldGiveTheFormattedAccumulator() {
-        String actualAccumulator = calculatorModel.formattedAccumulator();
+        String actualAccumulator = model.formattedAccumulator();
 
         assertThat(actualAccumulator, is("0.0"));
     }

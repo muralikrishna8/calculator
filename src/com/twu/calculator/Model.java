@@ -2,13 +2,13 @@ package com.twu.calculator;
 
 import java.util.Map;
 
-public class CalculatorModel {
+public class Model {
     private double accumulator;
     private Map<String, ArithmeticOperation> operations;
-    private CalculatorView calculatorView;
+    private View view;
 
-    public CalculatorModel(CalculatorView calculatorView, Map<String, ArithmeticOperation> operations) {
-        this.calculatorView = calculatorView;
+    public Model(View view, Map<String, ArithmeticOperation> operations) {
+        this.view = view;
         this.operations = operations;
     }
 

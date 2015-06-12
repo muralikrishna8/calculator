@@ -2,15 +2,15 @@ package com.twu.calculator;
 
 import java.util.ArrayList;
 
-public class CalculatorController {
-    private CalculatorView calculatorView;
-    private CalculatorModel calculatorModel;
+public class App {
+    private View view;
+    private Model model;
     private ArrayList<String> previousOperations;
 
-    public CalculatorController(CalculatorModel calculatorModel, CalculatorView calculatorView,
-                                ArrayList<String> previousOperations) {
-        this.calculatorModel = calculatorModel;
-        this.calculatorView = calculatorView;
+    public App(Model model, View view,
+               ArrayList<String> previousOperations) {
+        this.model = model;
+        this.view = view;
         this.previousOperations = previousOperations;
     }
 
@@ -18,8 +18,8 @@ public class CalculatorController {
         int repeatCount = 0;
         String input;
         do {
-            calculatorView.print(calculatorModel.formattedAccumulator());
-            input = calculatorView.read();
+            view.print(model.formattedAccumulator());
+            input = view.read();
             do {
                 if (repeatCount > 0) {
                     input = previousOperations.get(previousOperations.size() - repeatCount);
@@ -35,7 +35,7 @@ public class CalculatorController {
                 if (operatorName.equals("repeat")) {
                     repeatCount = (int) operand;
                 } else if (!operatorName.equals("exit"))
-                    calculatorModel.execute(operatorName, operand);
+                    model.execute(operatorName, operand);
             } while (repeatCount > 0);
             previousOperations.add(input);
         } while (!input.equals("exit"));

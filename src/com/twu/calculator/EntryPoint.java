@@ -5,17 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class CalculatorApp {
+public class EntryPoint {
     public static void main(String[] args) {
-        CalculatorView calculatorView = new CalculatorView(new Scanner(System.in));
+        View view = new View(new Scanner(System.in));
 
 
         Map<String, ArithmeticOperation> operations = initialiseOperations();
 
-        CalculatorModel calculatorModel = new CalculatorModel(calculatorView, operations);
+        Model model = new Model(view, operations);
 
-        CalculatorController calculatorController = new CalculatorController(calculatorModel, calculatorView, new ArrayList<String>());
-        calculatorController.start();
+        App app = new App(model, view, new ArrayList<String>());
+        app.start();
     }
 
     private static Map<String, ArithmeticOperation> initialiseOperations() {

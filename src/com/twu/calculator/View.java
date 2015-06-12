@@ -2,11 +2,11 @@ package com.twu.calculator;
 
 import java.util.Scanner;
 
-public class CalculatorView {
+public class View {
 
     private Scanner scanner;
 
-    public CalculatorView(Scanner scanner){
+    public View(Scanner scanner){
         this.scanner = scanner;
     }
 
