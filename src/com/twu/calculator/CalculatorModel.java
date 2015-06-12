@@ -15,6 +15,10 @@ public class CalculatorModel {
     public void execute(String command, double operand) {
         ArithmeticOperation arithmeticOperation = operations.get(command);
         this.accumulator = arithmeticOperation.execute(accumulator, operand);
-        calculatorView.print(accumulator +"");
+        calculatorView.print(accumulator + "");
+    }
+
+    public String formattedAccumulator() {
+        return "" + accumulator;
     }
 }

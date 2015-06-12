@@ -10,6 +10,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorModelTest {
     @Mock
@@ -83,5 +86,12 @@ public class CalculatorModelTest {
         calculatorModel.execute("divide", 3.0);
 
         Mockito.verify(mockDivide).execute(0.0, 3.0);
+    }
+
+    @Test
+    public void shouldGiveTheFormattedAccumulator() {
+        String actualAccumulator = calculatorModel.formattedAccumulator();
+
+        assertThat(actualAccumulator, is("0.0"));
     }
 }
