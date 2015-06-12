@@ -68,7 +68,6 @@ public class CalculatorControllerTest {
         when(mockCalculatorModel.formattedAccumulator()).thenReturn("0.0");
 
         calculatorController.start();
-
         verify(mockCalculatorView).print("0.0");
     }
 
