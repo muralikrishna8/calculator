@@ -3,7 +3,7 @@ package com.twu.calculator;
 import java.util.Map;
 
 public class CalculatorModel {
-    private double result;
+    private double accumulator;
     private Map<String, ArithmeticOperation> operations;
     private CalculatorView calculatorView;
 
@@ -14,7 +14,7 @@ public class CalculatorModel {
 
     public void execute(String command, double operand) {
         ArithmeticOperation arithmeticOperation = operations.get(command);
-        this.result = arithmeticOperation.execute(result, operand);
-        calculatorView.print(result+"");
+        this.accumulator = arithmeticOperation.execute(accumulator, operand);
+        calculatorView.print(accumulator +"");
     }
 }

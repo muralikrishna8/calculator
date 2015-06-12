@@ -1,5 +1,6 @@
 package com.twu.calculator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -7,26 +8,39 @@ import java.util.Scanner;
 public class CalculatorController {
     private CalculatorView calculatorView;
     private CalculatorModel calculatorModel;
+    private ArrayList<String> previousOperations;
 
-    public CalculatorController(CalculatorModel calculatorModel, CalculatorView calculatorView){
+    public CalculatorController(CalculatorModel calculatorModel, CalculatorView calculatorView,
+                                ArrayList<String> previousOperations) {
         this.calculatorModel = calculatorModel;
         this.calculatorView = calculatorView;
+        this.previousOperations = previousOperations;
     }
 
-    public void execute() {
-        String input = calculatorView.read();
-        while(!input.equals("exit")) {
-            String[] token = input.split(" ");
-            String operatorName = token[0];
-            double operand = 0.0;
-
-            if (inputHasTwoWords(token)) {
-                operand = Double.parseDouble(token[1]);
-            }
-            calculatorModel.execute(operatorName, operand);
-
+    public void start() {
+        int repeatCount = 0;
+        String input;
+        do {
             input = calculatorView.read();
-        }
+            do {
+                if (repeatCount > 0) {
+                    input = previousOperations.get(previousOperations.size() - repeatCount);
+                    repeatCount--;
+                }
+                String[] token = input.split(" ");
+                String operatorName = token[0];
+                double operand = 0.0;
+
+                if (inputHasTwoWords(token)) {
+                    operand = Double.parseDouble(token[1]);
+                }
+                if (operatorName.equals("repeat")) {
+                    repeatCount = (int) operand;
+                } else if (!operatorName.equals("exit"))
+                    calculatorModel.execute(operatorName, operand);
+            } while (repeatCount > 0);
+            previousOperations.add(input);
+        } while (!input.equals("exit"));
     }
 
     private boolean inputHasTwoWords(String[] token) {
@@ -61,9 +75,11 @@ public class CalculatorController {
         operations.put("cube", cube);
         operations.put("cubert", cubeRoot);
 
+        ArrayList<String> previousOperations = new ArrayList<>();
+
         CalculatorModel calculatorModel = new CalculatorModel(calculatorView, operations);
 
-        CalculatorController calculatorController = new CalculatorController(calculatorModel, calculatorView);
-        calculatorController.execute();
+        CalculatorController calculatorController = new CalculatorController(calculatorModel, calculatorView, previousOperations);
+        calculatorController.start();
     }
 }
