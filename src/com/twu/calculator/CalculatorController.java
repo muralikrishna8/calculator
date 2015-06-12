@@ -21,6 +21,7 @@ public class CalculatorController {
         int repeatCount = 0;
         String input;
         do {
+            calculatorView.print(calculatorModel.formattedAccumulator());
             input = calculatorView.read();
             do {
                 if (repeatCount > 0) {

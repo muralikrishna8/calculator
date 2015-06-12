@@ -62,4 +62,14 @@ public class CalculatorControllerTest {
         verify(mockCalculatorModel, times(4)).execute(anyString(), anyDouble());
     }
 
+    @Test
+    public void shouldGiveTheFormattedAccumulatorValueToViewForDisplaying() {
+        when(mockCalculatorView.read()).thenReturn("exit");
+        when(mockCalculatorModel.formattedAccumulator()).thenReturn("0.0");
+
+        calculatorController.start();
+
+        verify(mockCalculatorView).print("0.0");
+    }
+
 }
