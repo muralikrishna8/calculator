@@ -25,8 +25,6 @@ public class ModelTest {
     @Mock
     private Negative mockNegative;
     @Mock
-    private Square mockSquare;
-    @Mock
     private SquareRoot mockSquareRoot;
     @Mock
     private Cube mockCube;
@@ -42,7 +40,6 @@ public class ModelTest {
         arithmeticOperationMap.put("cancel", mockCancel);
         arithmeticOperationMap.put("abs", mockAbsolute);
         arithmeticOperationMap.put("neg", mockNegative);
-        arithmeticOperationMap.put("sqr", mockSquare);
         arithmeticOperationMap.put("sqrt", mockSquareRoot);
         arithmeticOperationMap.put("cube", mockCube);
         arithmeticOperationMap.put("cubert", mockCubeRoot);
@@ -64,18 +61,28 @@ public class ModelTest {
     }
     @Test
     public void shouldMultiplyTwoOperands(){
+        model.add(4);
         double actualTotal = model.multiply(4);
 
-        Assert.assertThat(actualTotal, is(0.0));
+        Assert.assertThat(actualTotal, is(16.0));
     }
     
     @Test
     public void shouldDivideTwoOperands(){
+        model.add(4);
         double actualTotal = model.divide(4);
 
-        Assert.assertThat(actualTotal, is(0.0));
+        Assert.assertThat(actualTotal, is(1.0));
     }
-    
+
+    @Test
+    public void shouldComputeSquare(){
+        model.add(4);
+        double actualTotal = model.square();
+
+        Assert.assertThat(actualTotal, is(16.0));
+    }
+
     @Test
     public void shouldGiveTheFormattedAccumulator() {
         String actualAccumulator = model.formattedAccumulator();
